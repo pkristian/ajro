@@ -1,0 +1,17 @@
+<?php declare(strict_types=1);
+
+namespace App\ToolsModule\Presenters;%n
+//+ěščřžýáíé.0<>$!"'@&
+class CaseGeneratorPresenter extends BasePresenter
+{
+%A%tpublic const COL_%S = '%s';%n%Z
+
+%A%Tpublic int $%c;
+%Z
+
+%A
+    public function get%P():string {
+        return $this->%c %% 2;
+    }
+%Z
+}
