@@ -3,12 +3,13 @@
 
 
 #include <iostream>
+#include <vector>
+#include "TokenStruct.h"
 
 class Lexer {
 public:
     Lexer();
-    void lex();
-
+    void lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe);
 };
 
 

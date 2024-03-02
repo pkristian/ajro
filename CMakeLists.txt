@@ -9,4 +9,6 @@
 
  add_executable(ajro src/main.cpp
          src/Lexer.cpp
-         src/Lexer.h)
+         src/Lexer.h
+         src/TokenEnum.h
+         src/TokenStruct.h)
