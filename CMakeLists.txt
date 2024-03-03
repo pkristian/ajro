@@ -11,4 +11,8 @@
          src/Lexer.cpp
          src/Lexer.h
          src/TokenEnum.h
-         src/TokenStruct.h)
+         src/TokenStruct.h
+         src/Parser.cpp
+         src/Parser.h
+         src/Compiler.cpp
+         src/Compiler.h)

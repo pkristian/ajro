@@ -6,6 +6,8 @@
 #include "Lexer.h"
 #include "TokenEnum.h"
 #include "TokenStruct.h"
+#include "Parser.h"
+#include "Compiler.h"
 
 #include <vector>
 
@@ -17,7 +19,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-        //check file
+    //check file
     std::ifstream fileRecipe;
     fileRecipe.open(argv[1]);
     if (fileRecipe.good()) {
@@ -46,18 +48,15 @@ int main(int argc, char *argv[]) {
 
     std::cout << std::endl;
 
-    std::vector<TokenStruct> tokenList;
 
     auto pLexer = new Lexer();
-    pLexer->lex(tokenList, fileRecipe);
+    tTokenList tokenList = pLexer->lex(fileRecipe);
 
+    auto pParser = new Parser();
+    tTokenList parsedTokenList = pParser->parse(tokenList);
 
-    std::cout << "tokens:\n";
-    for (
-        const TokenStruct& token: tokenList
-        ) {
-        std::cout << token.token << token.contents << '\n';
-    }
+    auto pCompiler = new Compiler();
+    pCompiler->compile(parsedTokenList, fileInput, fileOutput);
 
 
     return 0;

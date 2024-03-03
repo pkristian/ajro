@@ -1,0 +1,38 @@
+<?php declare(strict_types=1);
+
+namespace App\ToolsModule\Presenters;
+
+//+ěščřžýáíé.0<>$!"'@&
+class CaseGeneratorPresenter extends BasePresenter
+{
+	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
+	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
+	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
+	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
+
+
+    public int $camelCase;
+    public int $camelCase;
+    public int $camelCase;
+    public int $camelCase;
+
+
+
+    public function getPascalCase():string {
+        return $this->camelCase % 2;
+    }
+
+    public function getPascalCase():string {
+        return $this->camelCase % 2;
+    }
+
+    public function getPascalCase():string {
+        return $this->camelCase % 2;
+    }
+
+    public function getPascalCase():string {
+        return $this->camelCase % 2;
+    }
+
+}
+

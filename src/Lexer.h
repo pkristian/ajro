@@ -9,7 +9,7 @@
 class Lexer {
 public:
     Lexer();
-    void lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe);
+    tTokenList lex(std::ifstream &fileRecipe);
 };
 
 

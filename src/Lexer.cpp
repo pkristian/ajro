@@ -2,10 +2,12 @@
 #include <iostream>
 #include <fstream>
 
+
 Lexer::Lexer() = default;
 
-void Lexer::lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe) {
+tTokenList Lexer::lex(std::ifstream &fileRecipe) {
 
+    tTokenList tokenList;
     char c;
     std::string textBuffer;
     TokenStruct ts = {};
@@ -17,6 +19,7 @@ void Lexer::lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe) 
 
                 ts.token = TokenEnum::text;
                 ts.contents = textBuffer;
+                ts.typeLiteral = true;
                 tokenList.push_back(ts);
 
                 textBuffer.erase();
@@ -26,6 +29,7 @@ void Lexer::lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe) 
             }
             if (c == '\n') {
                 ts.token = TokenEnum::literalNewLine;
+                ts.typeLiteral = true;
                 tokenList.push_back(ts);
                 ts = {};
 
@@ -35,46 +39,57 @@ void Lexer::lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe) 
                 switch (c) {
                     case 'c': {
                         ts.token = TokenEnum::camelCase;
+                        ts.typeCase = true;
                         break;
                     }
                     case 'P': {
                         ts.token = TokenEnum::pascalCase;
+                        ts.typeCase = true;
                         break;
                     }
                     case 's': {
                         ts.token = TokenEnum::snakeCase;
+                        ts.typeCase = true;
                         break;
                     }
                     case 'S': {
                         ts.token = TokenEnum::screamingSnakeCase;
+                        ts.typeCase = true;
                         break;
                     }
                     case 'k': {
                         ts.token = TokenEnum::kebabCase;
+                        ts.typeCase = true;
                         break;
                     }
                     case 'A': {
                         ts.token = TokenEnum::loopStart;
+                        ts.typeControl = true;
                         break;
                     }
                     case 'Z': {
                         ts.token = TokenEnum::loopEnd;
+                        ts.typeControl = true;
                         break;
                     }
                     case '%': {
                         ts.token = TokenEnum::literalPercent;
+                        ts.typeLiteral = true;
                         break;
                     }
                     case 't': {
                         ts.token = TokenEnum::literalTab;
+                        ts.typeLiteral = true;
                         break;
                     }
                     case 'T': {
                         ts.token = TokenEnum::literalFakeTab;
+                        ts.typeLiteral = true;
                         break;
                     }
                     case 'n': {
                         ts.token = TokenEnum::literalNewLine;
+                        ts.typeLiteral = true;
                         break;
                     }
                     default: {
@@ -100,7 +115,10 @@ void Lexer::lex(std::vector<TokenStruct> &tokenList, std::ifstream &fileRecipe) 
 
     //add end of file at the end for parser
     ts.token = TokenEnum::eof;
+    ts.typeControl = true;
     tokenList.push_back(ts);
+
+    return tokenList;
 }
 
 
