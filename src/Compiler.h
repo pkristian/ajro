@@ -4,19 +4,27 @@
 
 #include <vector>
 #include "TokenStruct.h"
+#include "EntryStruct.h"
 
 class Compiler {
 public:
-    Compiler();
+    Compiler(
+        tTokenList &tokenList,
+        tEntryList &entryList,
+        std::ofstream &fileOutput
+        );
 
-    void compile(const tTokenList &tokenList, std::ifstream &fileInput, std::ofstream &fileOutput);
+    void compile();
 
 private:
-    void interpretToken(TokenStruct &token);
+    void interpretToken(const TokenStruct &token);
+    tTokenList *tokenList;
+    tEntryList *entryList;
+    std::ofstream *fileOutput;
 
-    void interpretToken(TokenStruct &token, std::ifstream &fileInput, std::ofstream &fileOutput);
+    void printCase(TokenEnum &token, EntryStruct &entry);
 
-    void interpretToken(const TokenStruct &token, std::ifstream &fileInput, std::ofstream &fileOutput);
+    void printCase(TokenEnum token, EntryStruct &entry);
 };
 
 

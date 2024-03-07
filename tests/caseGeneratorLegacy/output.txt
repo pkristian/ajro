@@ -5,33 +5,45 @@ namespace App\ToolsModule\Presenters;
 //+ěščřžýáíé.0<>$!"'@&
 class CaseGeneratorPresenter extends BasePresenter
 {
-	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
-	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
-	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
-	public const COL_SCREAMING_SNAKE_CAS = 'snake_case';
+	public const COL_EXAMPLE_DATA = 'example_data';
+	public const COL_USE_ANY_CASE_YOU_WANT = 'use_any_case_you_want';
+	public const COL_BE_MY_GUEST = 'be_my_guest';
+	public const COL_YOU_CAN_SCREAM = 'you_can_scream';
+	public const COL_3V3N_NUMB3RS_L1KE_528491 = '3v3n_numb3rs_l1ke_528491';
+	public const COL_BECAUSE_IT_IS_PARSING_WORDS = 'because_it_is_parsing_words';
 
 
-    public int $camelCase;
-    public int $camelCase;
-    public int $camelCase;
-    public int $camelCase;
+    public int $exampleData;
+    public int $useAnyCaseYouWant;
+    public int $beMyGuest;
+    public int $youCanScream;
+    public int $3v3nNumb3rsL1ke528491;
+    public int $becauseItIsParsingWords;
 
 
 
-    public function getPascalCase():string {
-        return $this->camelCase % 2;
+    public function getExampleData():string {
+        return $this->exampleData % 2;
     }
 
-    public function getPascalCase():string {
-        return $this->camelCase % 2;
+    public function getUseAnyCaseYouWant():string {
+        return $this->useAnyCaseYouWant % 2;
     }
 
-    public function getPascalCase():string {
-        return $this->camelCase % 2;
+    public function getBeMyGuest():string {
+        return $this->beMyGuest % 2;
     }
 
-    public function getPascalCase():string {
-        return $this->camelCase % 2;
+    public function getYouCanScream():string {
+        return $this->youCanScream % 2;
+    }
+
+    public function get3v3nNumb3rsL1ke528491():string {
+        return $this->3v3nNumb3rsL1ke528491 % 2;
+    }
+
+    public function getBecauseItIsParsingWords():string {
+        return $this->becauseItIsParsingWords % 2;
     }
 
 }

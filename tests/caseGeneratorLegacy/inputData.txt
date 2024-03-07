@@ -1,4 +1,8 @@
 Example data
-useAnyCaseYouWant  
-3v3n.numb3rs.l1ke.528491  
-Because it is paršing_WORDS
+  useAnyCaseYouWant
+  BeMyGuest
+YOU_CAN_SCREAM
+3v3n.numb3rs.l1ke.528491        
+
+   Because it is parsing_WORDS
+

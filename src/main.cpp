@@ -8,6 +8,8 @@
 #include "TokenStruct.h"
 #include "Parser.h"
 #include "Compiler.h"
+#include "EntryStruct.h"
+#include "Refiner.h"
 
 #include <vector>
 
@@ -55,8 +57,11 @@ int main(int argc, char *argv[]) {
     auto pParser = new Parser();
     tTokenList parsedTokenList = pParser->parse(tokenList);
 
-    auto pCompiler = new Compiler();
-    pCompiler->compile(parsedTokenList, fileInput, fileOutput);
+    auto pRefiner = new Refiner();
+    tEntryList entryList= pRefiner->refine(fileInput);
+
+    auto pCompiler = new Compiler(parsedTokenList, entryList, fileOutput);
+    pCompiler->compile();
 
 
     return 0;

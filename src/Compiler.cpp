@@ -1,90 +1,139 @@
 #include <fstream>
 #include "Compiler.h"
 #include "TokenStruct.h"
+#include "EntryStruct.h"
 
-Compiler::Compiler() = default;
 
-void Compiler::compile(
-    const tTokenList &tokenList,
-    std::ifstream &fileInput,
+Compiler::Compiler(
+    tTokenList &tokenList,
+    tEntryList &entryList,
     std::ofstream &fileOutput
 ) {
+    this->tokenList = &tokenList;
+    this->entryList = &entryList;
+    this->fileOutput = &fileOutput;
+
+
+}
+
+void Compiler::compile(
+) {
     for (
-        const TokenStruct &token: tokenList
+        const TokenStruct &token: *this->tokenList
         ) {
-        interpretToken(token, fileInput, fileOutput);
+        interpretToken(token);
     }
 
 
 }
 
-void Compiler::interpretToken(
-    const TokenStruct &token,
-    std::ifstream &fileInput,
-    std::ofstream &fileOutput
-) {
+void Compiler::interpretToken(const TokenStruct &token) {
     if (token.typeLiteral) {
         switch (token.token) {
             case text: {
-                fileOutput << token.contents;
+                *this->fileOutput << token.contents;
                 break;
             }
             case literalPercent: {
-                fileOutput << "%";
+                *this->fileOutput << "%";
                 break;
             }
             case literalTab: {
-                fileOutput << "\t";
+                *this->fileOutput << "\t";
                 break;
             }
             case literalFakeTab: {
-                fileOutput << "    ";
+                *this->fileOutput << "    ";
                 break;
             }
             case literalNewLine: {
-                fileOutput << "\n";
+                *this->fileOutput << "\n";
                 break;
             }
-        }
-    } else if (token.typeCase) {
-        switch (token.token) {
-            case camelCase: {
-                fileOutput << "camelCase";
-                break;
-            }
-            case pascalCase: {
-                fileOutput << "PascalCase";
-                break;
-            }
-            case snakeCase: {
-                fileOutput << "snake_case";
-                break;
-            }
-            case screamingSnakeCase: {
-                fileOutput << "SCREAMING_SNAKE_CAS";
-                break;
-            }
-            case kebabCase: {
-                fileOutput << "kebab-case";
-                break;
-            }
-
         }
     } else if (token.token == loopStart) {
-        std::vector<std::string> entryList = {};
-        entryList.push_back("first");
-        entryList.push_back("second");
-        entryList.push_back("thirth");
-        entryList.push_back("fotrh");
         for (
-            auto &entry: entryList
+            auto &entry: *this->entryList
             ) {
             for (
                 const TokenStruct &childToken: token.children
                 ) {
-                interpretToken(childToken, fileInput, fileOutput);
+                if (childToken.typeCase) {
+                    printCase(childToken.token, entry);
+                } else {
+                    interpretToken(childToken);
+                }
             }
 
+        }
+
+    }
+
+
+}
+
+void Compiler::printCase(TokenEnum token, EntryStruct &entry) {
+
+    std::string separator = {};
+    bool firstFirstUpper = false;
+    bool firstUpper = false;
+    bool allUpper = false;
+
+    int wordNum = 0;
+
+    switch (token) {
+        case camelCase: {
+            firstUpper = true;
+            break;
+        }
+        case pascalCase: {
+            firstFirstUpper = true;
+            firstUpper = true;
+            break;
+        }
+        case snakeCase: {
+            separator = '_';
+            break;
+        }
+        case screamingSnakeCase: {
+            allUpper = true;
+            separator = '_';
+            break;
+        }
+        case kebabCase: {
+            separator = '-';
+            break;
+        }
+    }
+
+
+    for (
+        std::string word: entry.words
+        ) {
+        wordNum++;
+
+
+        if (allUpper) {
+
+            for (
+                char &c: word
+                ) {
+                c = (char) toupper(c);
+
+            }
+        } else if (firstUpper) {
+            if (wordNum != 1 || firstFirstUpper) {
+                word[0] = (char) toupper(word[0]);
+
+            }
+
+        }
+
+
+        *this->fileOutput << word;
+
+        if (wordNum < entry.words.size()) {
+            *this->fileOutput << separator;
         }
 
     }

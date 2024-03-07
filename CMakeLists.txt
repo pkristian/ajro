@@ -15,4 +15,6 @@
          src/Parser.cpp
          src/Parser.h
          src/Compiler.cpp
-         src/Compiler.h)
+         src/Compiler.h
+         src/Refiner.cpp
+         src/Refiner.h)
