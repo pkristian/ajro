@@ -1,7 +1,7 @@
 #include <fstream>
 #include "Compiler.h"
-#include "TokenStruct.h"
-#include "EntryStruct.h"
+#include "struct/TokenStruct.h"
+#include "struct/EntryStruct.h"
 
 
 Compiler::Compiler(

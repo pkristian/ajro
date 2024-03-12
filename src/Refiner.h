@@ -1,9 +1,8 @@
-#ifndef AJRO_REFINER_H
-#define AJRO_REFINER_H
+#pragma once
 
 
 #include <fstream>
-#include "EntryStruct.h"
+#include "struct/EntryStruct.h"
 
 class Refiner {
 public:
@@ -16,4 +15,3 @@ private:
 };
 
 
-#endif

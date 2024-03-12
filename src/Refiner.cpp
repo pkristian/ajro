@@ -1,7 +1,6 @@
-#include <iostream>
 #include <cstring>
 #include "Refiner.h"
-#include "EntryStruct.h"
+#include "./struct/EntryStruct.h"
 
 
 Refiner::Refiner() = default;

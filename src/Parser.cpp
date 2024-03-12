@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 #include "Parser.h"
-#include "TokenStruct.h"
+#include "struct/TokenStruct.h"
 
 
 Parser::Parser() = default;

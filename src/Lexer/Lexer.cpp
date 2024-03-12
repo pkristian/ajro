@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 
-
 Lexer::Lexer() = default;
 
 tTokenList Lexer::lex(std::ifstream &fileRecipe) {
@@ -120,5 +119,3 @@ tTokenList Lexer::lex(std::ifstream &fileRecipe) {
 
     return tokenList;
 }
-
-

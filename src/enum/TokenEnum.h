@@ -1,8 +1,7 @@
-#ifndef AJRO_TOKENENUM_H
-#define AJRO_TOKENENUM_H
+#pragma once
 
 enum TokenEnum {
-    text ,
+    text,
     camelCase,
     pascalCase,
     snakeCase,
@@ -19,4 +18,3 @@ enum TokenEnum {
 
 };
 
-#endif //AJRO_TOKENENUM_H

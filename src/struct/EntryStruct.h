@@ -1,5 +1,4 @@
-#ifndef AJRO_ENTRYSTRUCT_H
-#define AJRO_ENTRYSTRUCT_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -11,4 +10,3 @@ struct EntryStruct {
 
 typedef std::vector<EntryStruct> tEntryList;
 
-#endif //AJRO_ENTRYSTRUCT_H

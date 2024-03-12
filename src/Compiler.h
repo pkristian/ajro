@@ -1,10 +1,9 @@
-#ifndef AJRO_COMPILER_H
-#define AJRO_COMPILER_H
+#pragma once
 
 
 #include <vector>
-#include "TokenStruct.h"
-#include "EntryStruct.h"
+#include "struct/TokenStruct.h"
+#include "struct/EntryStruct.h"
 
 class Compiler {
 public:
@@ -28,4 +27,3 @@ private:
 };
 
 
-#endif

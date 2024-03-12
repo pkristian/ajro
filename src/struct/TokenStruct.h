@@ -1,8 +1,7 @@
-#ifndef AJRO_TOKENSTRUCT_H
-#define AJRO_TOKENSTRUCT_H
+#pragma once
 
 #include <string>
-#include "TokenEnum.h"
+#include "../enum/TokenEnum.h"
 
 
 struct TokenStruct {
@@ -16,4 +15,3 @@ struct TokenStruct {
 
 typedef std::vector<TokenStruct> tTokenList;
 
-#endif //AJRO_TOKENSTRUCT_H

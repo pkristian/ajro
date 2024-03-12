@@ -1,9 +1,7 @@
-#ifndef AJRO_PARSER_H
-#define AJRO_PARSER_H
+#pragma once
 
 
-#include "TokenStruct.h"
-
+#include "struct/TokenStruct.h"
 
 
 class Parser {
@@ -14,4 +12,3 @@ public:
 };
 
 
-#endif

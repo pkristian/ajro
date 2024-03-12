@@ -1,17 +1,12 @@
 #include <iostream>
 #include <array>
 #include <fstream>
-
-#include "cmath"
-#include "Lexer.h"
-#include "TokenEnum.h"
-#include "TokenStruct.h"
-#include "Parser.h"
-#include "Compiler.h"
-#include "EntryStruct.h"
-#include "Refiner.h"
-
 #include <vector>
+#include "cmath"
+
+#include "./loader.h"
+
+
 
 int main(int argc, char *argv[]) {
 
@@ -58,7 +53,7 @@ int main(int argc, char *argv[]) {
     tTokenList parsedTokenList = pParser->parse(tokenList);
 
     auto pRefiner = new Refiner();
-    tEntryList entryList= pRefiner->refine(fileInput);
+    tEntryList entryList = pRefiner->refine(fileInput);
 
     auto pCompiler = new Compiler(parsedTokenList, entryList, fileOutput);
     pCompiler->compile();
